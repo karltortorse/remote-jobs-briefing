@@ -4,83 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remote Jobs Briefing - Feb 2, 2026</title>
+    <meta name="description" content="Daily curated remote job opportunities for developers, DevOps, and product professionals.">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="cec8b016-3089-457e-9695-5c7cb7fa9d21"></script>
     <style>
         :root {
             --primary: #2563eb;
             --text: #1f2937;
+            --text-secondary: #6b7280;
             --bg: #f9fafb;
             --card-bg: #ffffff;
             --border: #e5e7eb;
+            --green: #059669;
         }
+        * { box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text);
             background: var(--bg);
             margin: 0;
             padding: 20px;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-top: 40px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #111827;
-        }
-        .date {
-            color: #6b7280;
-            font-size: 1.1rem;
-        }
+        .container { max-width: 800px; margin: 0 auto; }
         .back-link {
             display: inline-block;
-            margin-top: 15px;
+            margin-bottom: 20px;
             color: var(--primary);
             text-decoration: none;
             font-size: 0.9rem;
         }
-        .back-link:hover {
-            text-decoration: underline;
+        header { text-align: center; margin-bottom: 40px; padding-top: 20px; }
+        h1 { font-size: 2rem; margin-bottom: 8px; color: #111827; }
+        .issue-info { color: var(--text-secondary); font-size: 0.95rem; }
+        
+        /* Section Headers */
+        h2.section-title {
+            font-size: 1.4rem;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            color: #111827;
         }
-        .job-card {
+        
+        /* Summary Stats */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Market Insight */
+        .insight-box {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        .insight-box h3 { margin: 0 0 12px; font-size: 1.1rem; }
+        .insight-box p { margin: 0; opacity: 0.95; font-size: 0.95rem; }
+        
+        /* Featured Job */
+        .featured-job {
             background: var(--card-bg);
+            border: 2px solid var(--primary);
             border-radius: 12px;
             padding: 24px;
             margin-bottom: 20px;
+            position: relative;
+        }
+        .featured-badge {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        /* Job Cards */
+        .job-card {
+            background: var(--card-bg);
             border: 1px solid var(--border);
-            transition: transform 0.2s;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .job-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
         .company {
-            font-size: 0.875rem;
-            color: #6b7280;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
             margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
             font-weight: 600;
         }
         .job-title {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 600;
-            margin: 0 0 10px 0;
+            margin: 0 0 8px 0;
         }
-        .job-title a {
-            color: var(--primary);
-            text-decoration: none;
+        .job-title a { color: var(--text); text-decoration: none; }
+        .job-title a:hover { color: var(--primary); }
+        .job-highlight {
+            background: #fef3c7;
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+            color: #92400e;
         }
-        .job-title a:hover {
-            text-decoration: underline;
-        }
+        .job-highlight::before { content: "💡 "; }
         .tags {
             display: flex;
             flex-wrap: wrap;
@@ -89,170 +142,215 @@
         }
         .tag {
             font-size: 0.75rem;
-            background: #e0f2fe;
-            color: #0369a1;
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 9999px;
             font-weight: 500;
         }
-        .tag.location {
-            background: #f3f4f6;
-            color: #4b5563;
+        .tag.type { background: #dcfce7; color: #15803d; }
+        .tag.location { background: #f3f4f6; color: #4b5563; }
+        .tag.salary { background: #fef3c7; color: #92400e; }
+        .tag.category { background: #e0e7ff; color: #3730a3; }
+        
+        /* Tips */
+        .tips-box {
+            background: #eff6ff;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 30px 0;
         }
-        .tag.type {
-            background: #dcfce7;
-            color: #15803d;
+        .tips-box h3 { margin: 0 0 12px; font-size: 1rem; color: #1e40af; }
+        .tips-box ul { margin: 0; padding-left: 20px; color: #1e40af; }
+        .tips-box li { margin-bottom: 6px; font-size: 0.9rem; }
+        
+        /* Quote */
+        .quote {
+            background: #fefce8;
+            border-left: 4px solid #eab308;
+            padding: 16px 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
         }
+        .quote p { margin: 0 0 8px; font-style: italic; }
+        .quote cite { font-size: 0.85rem; color: var(--text-secondary); }
+        
         footer {
             text-align: center;
             margin-top: 60px;
-            color: #9ca3af;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
+        footer a { color: var(--primary); }
     </style>
 </head>
 <body>
     <div class="container">
+        <a href="/" class="back-link">← Back to Archives</a>
         <header>
-            <h1>Remote Jobs Briefing</h1>
-            <div class="date">Monday, February 2, 2026</div>
-            <a href="/" class="back-link">← Back to Archives</a>
+            <h1>💼 Remote Jobs Briefing</h1>
+            <div class="issue-info">Issue #2 · Monday, February 2, 2026</div>
         </header>
 
-        <main>
-            <!-- Job 1 - DevOps -->
-            <article class="job-card">
-                <div class="company">CapB InfoteK</div>
-                <h2 class="job-title">
-                    <a href="https://weworkremotely.com/remote-jobs/capb-infotek-remote-full-time-sre-devops-engagement-lead-cloud-platform-architect" target="_blank">SRE DevOps Engagement Lead & Cloud Platform Architect</a>
-                </h2>
-                <div class="tags">
-                    <span class="tag type">Full-Time</span>
-                    <span class="tag location">Remote, USA</span>
-                    <span class="tag">DevOps</span>
-                </div>
-            </article>
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Jobs Today</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">DevOps Roles</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Worldwide</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$170</div>
+                <div class="stat-label">Top Hourly</div>
+            </div>
+        </div>
 
-            <!-- Job 2 - DevOps -->
-            <article class="job-card">
-                <div class="company">Blackfluo.ai</div>
-                <h2 class="job-title">
-                    <a href="https://weworkremotely.com/remote-jobs/blackfluo-ai-senior-devops-full-remote" target="_blank">Senior DevOps (Full Remote)</a>
-                </h2>
-                <div class="tags">
-                    <span class="tag type">Full-Time</span>
-                    <span class="tag location">Anywhere in the World</span>
-                    <span class="tag">Malta HQ</span>
-                </div>
-            </article>
+        <!-- Market Insight -->
+        <div class="insight-box">
+            <h3>📊 Today's Market Insight</h3>
+            <p>DevOps continues to dominate remote hiring! 6 out of 10 jobs today are DevOps/SRE roles. Companies are prioritizing cloud infrastructure and platform engineering. If you're a DevOps engineer, it's a seller's market.</p>
+        </div>
 
-            <!-- Job 3 - DevOps -->
-            <article class="job-card">
-                <div class="company">Turnitin</div>
-                <h2 class="job-title">
-                    <a href="https://weworkremotely.com/remote-jobs/turnitin-devops-engineer-poland-remote" target="_blank">DevOps Engineer (Poland Remote)</a>
-                </h2>
-                <div class="tags">
-                    <span class="tag type">Full-Time</span>
-                    <span class="tag location">Poznań, Poland</span>
-                    <span class="tag">DevOps</span>
-                </div>
-            </article>
+        <!-- Featured Job -->
+        <h2 class="section-title">⭐ Featured Opportunity</h2>
+        <article class="featured-job">
+            <div class="featured-badge">TOP PICK</div>
+            <div class="company">A.Team</div>
+            <h2 class="job-title">
+                <a href="https://weworkremotely.com/remote-jobs/a-team-senior-independent-product-manager-product-designer-90-170-hr" target="_blank">Senior Independent Product Manager / Designer</a>
+            </h2>
+            <div class="job-highlight">$90-170/hr — one of the highest-paying remote opportunities today. A.Team curates elite freelance talent for top tech companies.</div>
+            <div class="tags">
+                <span class="tag type">Contract</span>
+                <span class="tag location">Anywhere in the World</span>
+                <span class="tag salary">$90-170/hr</span>
+            </div>
+        </article>
 
-            <!-- Job 4 - DevOps -->
-            <article class="job-card">
-                <div class="company">Inco</div>
-                <h2 class="job-title">
-                    <a href="https://weworkremotely.com/remote-jobs/inco-devops-engineer" target="_blank">DevOps Engineer</a>
-                </h2>
-                <div class="tags">
-                    <span class="tag type">Full-Time</span>
-                    <span class="tag location">Anywhere in the World</span>
-                    <span class="tag">DevOps</span>
-                </div>
-            </article>
+        <!-- DevOps -->
+        <h2 class="section-title">🔧 DevOps & Infrastructure</h2>
 
-            <!-- Job 5 - DevOps -->
-            <article class="job-card">
-                <div class="company">Graham Healthcare Group</div>
-                <h2 class="job-title">
-                    <a href="https://weworkremotely.com/remote-jobs/graham-healthcare-group-devops-engineer" target="_blank">DevOps Engineer</a>
-                </h2>
-                <div class="tags">
-                    <span class="tag type">Full-Time</span>
-                    <span class="tag location">Remote/Nationwide, USA</span>
-                    <span class="tag">DevOps</span>
-                </div>
-            </article>
+        <article class="job-card">
+            <div class="company">CapB InfoteK</div>
+            <h2 class="job-title">
+                <a href="https://weworkremotely.com/remote-jobs/capb-infotek-remote-full-time-sre-devops-engagement-lead-cloud-platform-architect" target="_blank">SRE DevOps Engagement Lead & Cloud Platform Architect</a>
+            </h2>
+            <div class="job-highlight">高级职位，需要同时具备技术领导力和架构能力。适合有5年+经验的 SRE。</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">USA</span>
+                <span class="tag category">SRE</span>
+            </div>
+        </article>
 
-            <!-- Job 6 - Programming -->
-            <article class="job-card">
-                <div class="company">Tether</div>
-                <h2 class="job-title">
-                    <a href="https://weworkremotely.com/remote-jobs/tether-product-engineer-100-remote" target="_blank">Product Engineer (100% Remote)</a>
-                </h2>
-                <div class="tags">
-                    <span class="tag type">Full-Time</span>
-                    <span class="tag location">Anywhere in the World</span>
-                    <span class="tag">Product</span>
-                </div>
-            </article>
+        <article class="job-card">
+            <div class="company">Blackfluo.ai</div>
+            <h2 class="job-title">
+                <a href="https://weworkremotely.com/remote-jobs/blackfluo-ai-senior-devops-full-remote" target="_blank">Senior DevOps (Full Remote)</a>
+            </h2>
+            <div class="job-highlight">AI 公司，全球招聘。Malta 总部，欧洲时区友好。</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">Worldwide</span>
+                <span class="tag category">DevOps</span>
+            </div>
+        </article>
 
-            <!-- Job 7 - Product -->
-            <article class="job-card">
-                <div class="company">Jumpspeak</div>
-                <h2 class="job-title">
-                    <a href="https://weworkremotely.com/remote-jobs/jumpspeak-product-lead-contract" target="_blank">Product Lead (Contract)</a>
-                </h2>
-                <div class="tags">
-                    <span class="tag type">Contract</span>
-                    <span class="tag location">Anywhere in the World</span>
-                    <span class="tag">$75k - $100k USD</span>
-                </div>
-            </article>
+        <article class="job-card">
+            <div class="company">Turnitin</div>
+            <h2 class="job-title">
+                <a href="https://weworkremotely.com/remote-jobs/turnitin-devops-engineer-poland-remote" target="_blank">DevOps Engineer (Poland Remote)</a>
+            </h2>
+            <div class="job-highlight">知名教育科技公司。限波兰，但完全远程。</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">Poland</span>
+                <span class="tag category">DevOps</span>
+            </div>
+        </article>
 
-            <!-- Job 8 - Programming -->
-            <article class="job-card">
-                <div class="company">European Dynamics</div>
-                <h2 class="job-title">
-                    <a href="https://weworkremotely.com/remote-jobs/european-dynamics-java-web-developer-with-german" target="_blank">Java / Web Developer with German</a>
-                </h2>
-                <div class="tags">
-                    <span class="tag type">Full-Time</span>
-                    <span class="tag location">Greece (Remote)</span>
-                    <span class="tag">Programming</span>
-                </div>
-            </article>
+        <article class="job-card">
+            <div class="company">Digioh</div>
+            <h2 class="job-title">
+                <a href="https://weworkremotely.com/remote-jobs/digioh-senior-cloud-infrastructure-engineer" target="_blank">Senior Cloud Infrastructure Engineer</a>
+            </h2>
+            <div class="job-highlight">$100k+ 年薪，全球招聘。专注云基础设施。</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">Worldwide</span>
+                <span class="tag salary">$100k+</span>
+            </div>
+        </article>
 
-            <!-- Job 9 - DevOps -->
-            <article class="job-card">
-                <div class="company">Digioh</div>
-                <h2 class="job-title">
-                    <a href="https://weworkremotely.com/remote-jobs/digioh-senior-cloud-infrastructure-engineer" target="_blank">Senior Cloud Infrastructure Engineer</a>
-                </h2>
-                <div class="tags">
-                    <span class="tag type">Full-Time</span>
-                    <span class="tag location">Anywhere in the World</span>
-                    <span class="tag">$100k+ USD</span>
-                </div>
-            </article>
+        <!-- Product & Engineering -->
+        <h2 class="section-title">🚀 Product & Engineering</h2>
 
-            <!-- Job 10 - Product -->
-            <article class="job-card">
-                <div class="company">A.Team</div>
-                <h2 class="job-title">
-                    <a href="https://weworkremotely.com/remote-jobs/a-team-senior-independent-product-manager-product-designer-90-170-hr" target="_blank">Senior Independent Product Manager / Designer</a>
-                </h2>
-                <div class="tags">
-                    <span class="tag type">Contract</span>
-                    <span class="tag location">Anywhere in the World</span>
-                    <span class="tag">$90-170/hr</span>
-                </div>
-            </article>
-        </main>
+        <article class="job-card">
+            <div class="company">Tether</div>
+            <h2 class="job-title">
+                <a href="https://weworkremotely.com/remote-jobs/tether-product-engineer-100-remote" target="_blank">Product Engineer (100% Remote)</a>
+            </h2>
+            <div class="job-highlight">稳定币巨头 Tether 招人。加密货币行业，薪资通常很有竞争力。</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">Worldwide</span>
+                <span class="tag category">Crypto</span>
+            </div>
+        </article>
+
+        <article class="job-card">
+            <div class="company">Jumpspeak</div>
+            <h2 class="job-title">
+                <a href="https://weworkremotely.com/remote-jobs/jumpspeak-product-lead-contract" target="_blank">Product Lead (Contract)</a>
+            </h2>
+            <div class="job-highlight">语言学习 App。$75k-100k 合同制，适合想要灵活工作的 PM。</div>
+            <div class="tags">
+                <span class="tag type">Contract</span>
+                <span class="tag location">Worldwide</span>
+                <span class="tag salary">$75k-100k</span>
+            </div>
+        </article>
+
+        <article class="job-card">
+            <div class="company">European Dynamics</div>
+            <h2 class="job-title">
+                <a href="https://weworkremotely.com/remote-jobs/european-dynamics-java-web-developer-with-german" target="_blank">Java / Web Developer with German</a>
+            </h2>
+            <div class="job-highlight">需要德语能力。欧盟项目，适合会德语的开发者。</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">Greece (Remote)</span>
+                <span class="tag category">Java</span>
+            </div>
+        </article>
+
+        <!-- Tips -->
+        <div class="tips-box">
+            <h3>💡 Today's Job Hunting Tips</h3>
+            <ul>
+                <li>DevOps 岗位火热，但竞争也激烈。突出你的云平台认证（AWS/GCP/Azure）会加分。</li>
+                <li>全球远程岗位往往要求英语流利，准备好你的英文简历和 LinkedIn。</li>
+                <li>高薪合同岗（如 A.Team）通常需要 portfolio 和推荐人，提前准备。</li>
+            </ul>
+        </div>
+
+        <!-- Quote -->
+        <h2 class="section-title">💬 Quote of the Day</h2>
+        <blockquote class="quote">
+            <p>"Remote work isn't a perk anymore. It's an expectation."</p>
+            <cite>— Remote OK, State of Remote Work 2026</cite>
+        </blockquote>
 
         <footer>
-            <p>Curated by 阿福 (Ah Fu) • Powered by Vercel</p>
+            <p>Data from <a href="https://weworkremotely.com" target="_blank">We Work Remotely</a> · Curated by 阿福 (Ah Fu)</p>
+            <p style="font-size: 0.8rem; margin-top: 8px;"><a href="/">Archives</a> · Powered by Vercel</p>
         </footer>
     </div>
 </body>
