@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Jobs Briefing - Feb 3, 2026</title>
+    <meta name="description" content="Daily curated remote job opportunities for developers, DevOps, and product professionals.">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="cec8b016-3089-457e-9695-5c7cb7fa9d21"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --text: #1f2937;
+            --text-secondary: #6b7280;
+            --bg: #f9fafb;
+            --card-bg: #ffffff;
+            --border: #e5e7eb;
+            --green: #059669;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            margin: 0;
+            padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        header { text-align: center; margin-bottom: 40px; padding-top: 20px; }
+        h1 { font-size: 2rem; margin-bottom: 8px; color: #111827; }
+        .issue-info { color: var(--text-secondary); font-size: 0.95rem; }
+        
+        h2.section-title {
+            font-size: 1.4rem;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            color: #111827;
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+        .stat-label { font-size: 0.85rem; color: var(--text-secondary); }
+        
+        .insight-box {
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        .insight-box h3 { margin: 0 0 12px; font-size: 1.1rem; }
+        .insight-box p { margin: 0; opacity: 0.95; font-size: 0.95rem; }
+        
+        .featured-job {
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .featured-badge {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .job-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .job-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .company {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        .job-title { font-size: 1.15rem; font-weight: 600; margin: 0 0 8px 0; }
+        .job-title a { color: var(--text); text-decoration: none; }
+        .job-title a:hover { color: var(--primary); }
+        .job-highlight {
+            background: #fef3c7;
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+        .job-highlight::before { content: "💡 "; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .tag {
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            font-weight: 500;
+        }
+        .tag.type { background: #dcfce7; color: #15803d; }
+        .tag.location { background: #f3f4f6; color: #4b5563; }
+        .tag.salary { background: #fef3c7; color: #92400e; }
+        .tag.category { background: #e0e7ff; color: #3730a3; }
+        
+        .tips-box {
+            background: #eff6ff;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 30px 0;
+        }
+        .tips-box h3 { margin: 0 0 12px; font-size: 1rem; color: #1e40af; }
+        .tips-box ul { margin: 0; padding-left: 20px; color: #1e40af; }
+        .tips-box li { margin-bottom: 6px; font-size: 0.9rem; }
+        
+        .quote {
+            background: #fefce8;
+            border-left: 4px solid #eab308;
+            padding: 16px 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote p { margin: 0 0 8px; font-style: italic; }
+        .quote cite { font-size: 0.85rem; color: var(--text-secondary); }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Archives</a>
+        <header>
+            <h1>💼 Remote Jobs Briefing</h1>
+            <div class="issue-info">Issue #3 · Tuesday, February 3, 2026</div>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Jobs Today</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Engineering</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">US-Friendly</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$300k</div>
+                <div class="stat-label">Top Salary</div>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h3>📊 Today's Market Insight</h3>
+            <p>Enterprise and AI-heavy roles are trending today. Several US companies are hiring senior engineers with strong cloud, data, and AI/ML experience, often with compensation packages reaching $250k–$300k.</p>
+        </div>
+
+        <h2 class="section-title">⭐ Featured Opportunity</h2>
+        <article class="featured-job">
+            <div class="featured-badge">TOP PICK</div>
+            <div class="company">BNSF Railway</div>
+            <h2 class="job-title">
+                <a href="https://remotive.com/remote-jobs/software-development/product-platform-enterprise-full-stack-sr-staff-software-engineer-2088612" target="_blank">Product, Platform &amp; Enterprise Full Stack Sr/Staff Software Engineer</a>
+            </h2>
+            <div class="job-highlight">US-remote, full-time, with a $165k–$300k salary range and strong benefits. Ideal for senior full-stack engineers with distributed systems and cloud experience.</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">USA (Remote)</span>
+                <span class="tag salary">$165k–$300k</span>
+                <span class="tag.category">Full-Stack</span>
+            </div>
+        </article>
+
+        <h2 class="section-title">🤖 AI, Data &amp; Platform Engineering</h2>
+
+        <article class="job-card">
+            <div class="company">BNSF Railway</div>
+            <h2 class="job-title">
+                <a href="https://remotive.com/remote-jobs/software-development/product-platform-enterprise-front-end-sr-staff-software-engineer-2088611" target="_blank">Product, Platform &amp; Enterprise Front End Sr/Staff Software Engineer</a>
+            </h2>
+            <div class="job-highlight">Senior front-end role building complex web/mobile experiences for large-scale rail logistics platforms.</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">USA (Remote)</span>
+                <span class="tag category">Front-End</span>
+            </div>
+        </article>
+
+        <article class="job-card">
+            <div class="company">BNSF Railway</div>
+            <h2 class="job-title">
+                <a href="https://remotive.com/remote-jobs/ai-ml/sr-staff-ai-engineer-2088613" target="_blank">Sr/Staff AI Engineer</a>
+            </h2>
+            <div class="job-highlight">Hands-on AI/ML leadership role working on predictive maintenance, optimization, and GenAI for rail operations.</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">USA (Remote)</span>
+                <span class="tag category">AI / ML</span>
+            </div>
+        </article>
+
+        <article class="job-card">
+            <div class="company">Mitre Media</div>
+            <h2 class="job-title">
+                <a href="https://remotive.com/remote-jobs/software-development/tech-lead-databricks-data-engineer-2069747" target="_blank">Tech Lead Databricks Data Engineer</a>
+            </h2>
+            <div class="job-highlight">Lead-level data engineering role using Databricks, Spark, and cloud tools in a fintech-focused media company.</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">USA / Canada (Remote)</span>
+                <span class="tag category">Data Engineering</span>
+            </div>
+        </article>
+
+        <h2 class="section-title">🛠 Senior Engineering &amp; DevOps</h2>
+
+        <article class="job-card">
+            <div class="company">Marketerx</div>
+            <h2 class="job-title">
+                <a href="https://remotive.com/remote-jobs/devops/senior-devops-engineer-2070150" target="_blank">Senior DevOps Engineer</a>
+            </h2>
+            <div class="job-highlight">High-impact DevOps role with heavy AWS, Kubernetes, Terraform, and SRE responsibilities.</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">USA (Remote)</span>
+                <span class="tag category">DevOps</span>
+            </div>
+        </article>
+
+        <article class="job-card">
+            <div class="company">Mitre Media</div>
+            <h2 class="job-title">
+                <a href="https://remotive.com/remote-jobs/software-development/tech-lead-full-stack-rails-engineer-2069746" target="_blank">Tech Lead Full-Stack Rails Engineer</a>
+            </h2>
+            <div class="job-highlight">Lead a full-stack team building fintech web products with Ruby on Rails, React, and modern cloud tooling.</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">USA / Canada / US Timezones</span>
+                <span class="tag category">Full-Stack</span>
+            </div>
+        </article>
+
+        <article class="job-card">
+            <div class="company">Apexver</div>
+            <h2 class="job-title">
+                <a href="https://remotive.com/remote-jobs/software-development/software-engineer-c-senior-2069728" target="_blank">Software Engineer C++ (Senior)</a>
+            </h2>
+            <div class="job-highlight">Performance-oriented C++ role in a trading/infrastructure environment. Great for low-latency and systems engineers.</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">Worldwide</span>
+                <span class="tag category">C++ / Systems</span>
+            </div>
+        </article>
+
+        <h2 class="section-title">📦 Product &amp; Hybrid Roles</h2>
+
+        <article class="job-card">
+            <div class="company">JLS Trading Co</div>
+            <h2 class="job-title">
+                <a href="https://remotive.com/remote-jobs/product/product-developer-engineer-fun-ecom-co-great-people-flexible-hours-2088608" target="_blank">Product Developer / Engineer @ Fun Ecom Co</a>
+            </h2>
+            <div class="job-highlight">Hybrid product + engineering role for an e-commerce company, mixing CAD, supply chain, and testing.</div>
+            <div class="tags">
+                <span class="tag type">Full-Time</span>
+                <span class="tag location">Worldwide</span>
+                <span class="tag category">Product / Engineering</span>
+            </div>
+        </article>
+
+        <article class="job-card">
+            <div class="company">A.Team</div>
+            <h2 class="job-title">
+                <a href="https://remotive.com/remote-jobs/software-development/senior-independent-software-developer-1919265" target="_blank">Senior Independent Software Developer</a>
+            </h2>
+            <div class="job-highlight">Join A.Team's vetted network of senior engineers for high-paying, flexible freelance projects.</div>
+            <div class="tags">
+                <span class="tag type">Contract / Freelance</span>
+                <span class="tag location">Americas / Europe / Israel</span>
+                <span class="tag category">Senior Engineering</span>
+            </div>
+        </article>
+
+        <article class="job-card">
+            <div class="company">A.Team</div>
+            <h2 class="job-title">
+                <a href="https://remotive.com/remote-jobs/software-development/senior-independent-ai-engineer-architect-1919266" target="_blank">Senior Independent AI Engineer / Architect</a>
+            </h2>
+            <div class="job-highlight">Freelance AI engineering/architecture for top tech clients via A.Team’s premium network.</div>
+            <div class="tags">
+                <span class="tag type">Contract / Freelance</span>
+                <span class="tag location">Americas / Europe / Israel</span>
+                <span class="tag category">AI Engineering</span>
+            </div>
+        </article>
+
+        <div class="tips-box">
+            <h3>💡 Today's Job Hunting Tips</h3>
+            <ul>
+                <li>For US-remote roles, highlight any prior US client/company experience and your overlap with US time zones.</li>
+                <li>Lead and staff positions often require evidence of impact: prepare 2–3 strong case studies with metrics.</li>
+                <li>For freelance networks like A.Team, invest extra time into your profile, portfolio, and references—the vetting bar is high.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">💬 Quote of the Day</h2>
+        <blockquote class="quote">
+            <p>"The best remote roles don’t just pay well—they give you leverage: interesting problems, great teams, and flexibility."</p>
+            <cite>— Curated by Ah Fu</cite>
+        </blockquote>
+
+        <footer>
+            <p>Data from <a href="https://remotive.com" target="_blank">Remotive</a> · Curated by Ah Fu</p>
+            <p style="font-size: 0.8rem; margin-top: 8px;"><a href="/">Archives</a></p>
+        </footer>
+    </div>
+</body>
+</html>
